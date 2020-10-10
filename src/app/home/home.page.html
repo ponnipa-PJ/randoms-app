@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      แอพสุ่ม
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="container">
+    <ion-list>
+      <ion-radio-group (ionChange)="radioGroupChange($event)">
+        <!-- <ion-item *ngFor="let item of title_type" (ionFocus)="radioFocus()" (ionSelect)="radioSelect($event)"
+        (ionBlur)="radioBlur()"> -->
+        <ion-item *ngFor="let item of title_type">
+          <ion-label>{{item.namethai}}</ion-label>
+          <ion-radio slot="start" name="{{item.namethai}}" value="{{item.value}}"
+            color="{{item.color}}" disabled="{{item.disabled}}"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <div *ngIf="selectedRadioGroup == 'color'">
+      <div *ngFor="let shayari of shayar_list">
+        <label>{{shayari.title}}</label>
+        <ion-card>
+          <ion-card-content class="random" style="color:white;" [ngStyle]="{'background-color':shayari.color}">
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <ion-button round outline (click)="getRandomColor()">Random Color</ion-button>
+    </div>
+
+    <div *ngIf="selectedRadioGroup == 'number'">
+      <ion-card>
+        <ion-card-content class="random"> {{rd}} </ion-card-content>
+      </ion-card>
+      <ion-button round outline (click)="getRandomNumber()">Random Number</ion-button>
+    </div>
+
+    <div *ngIf="selectedRadioGroup == 'food'">
+      <ion-card>
+        <ion-card-content class="random"> {{food}} </ion-card-content>
+      </ion-card>
+      <ion-button round outline (click)="getRandomFood()">Random Food</ion-button>
+    </div>
+
+  </div>
+</ion-content>

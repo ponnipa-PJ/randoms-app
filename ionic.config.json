@@ -1,0 +1,8 @@
+{
+  "name": "random-app",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
